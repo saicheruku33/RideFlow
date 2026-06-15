@@ -1,5 +1,6 @@
 package com.sai.rideFlow;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,10 +11,11 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@Entity
 public class Driver {
     @Id
-    int driverID;
-    String name;
-    int age;
-    String emailID;
+    private int driverID;
+    private String name;
+    private int age;
+    private String emailID;
 }

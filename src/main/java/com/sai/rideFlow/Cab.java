@@ -12,11 +12,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Customer {
+public class Cab {
     @Id
-    private int customerID;
-    private String name;
-    private int age;
-    private String emailID;
-    private Gender gender;
+    int cabID;
+    int cabNo;
+    String cabModel;
+    int perkmRate;
+    boolean available;
 }

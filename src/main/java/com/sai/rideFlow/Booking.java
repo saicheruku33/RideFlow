@@ -12,11 +12,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Customer {
+public class Booking {
     @Id
-    private int customerID;
-    private String name;
-    private int age;
-    private String emailID;
-    private Gender gender;
+    private int bookingID;
+    private String pickup;
+    private String destination;
+    private int tripDistKm;
+    TripStatus tripStatus;
+    int billAmount;
 }
