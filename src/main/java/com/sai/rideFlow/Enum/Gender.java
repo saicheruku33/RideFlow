@@ -1,4 +1,4 @@
-package com.sai.rideFlow;
+package com.sai.rideFlow.Enum;
 
 public enum Gender {
     Male,

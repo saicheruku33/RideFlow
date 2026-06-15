@@ -1,4 +1,4 @@
-package com.sai.rideFlow;
+package com.sai.rideFlow.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

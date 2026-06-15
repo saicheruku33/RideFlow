@@ -1,6 +1,10 @@
-package com.sai.rideFlow;
+package com.sai.rideFlow.Model;
 
-import jakarta.persistence.*;
+import com.sai.rideFlow.Enum.Gender;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,16 +18,14 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Driver {
+public class Customer {
     @Id
-    private int driverID;
+    private int customerID;
     private String name;
     private int age;
     private String emailID;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="driver_ID")
+    private Gender gender;
+    @OneToMany
+    @JoinColumn(name="customerId")
     List<Booking> bookings=new ArrayList<>();
-    @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name="cab_Id")
-    Cab cab;
 }

@@ -1,5 +1,6 @@
-package com.sai.rideFlow;
+package com.sai.rideFlow.Model;
 
+import com.sai.rideFlow.Enum.TripStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
