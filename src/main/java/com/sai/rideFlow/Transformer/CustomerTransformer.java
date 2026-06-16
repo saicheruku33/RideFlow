@@ -6,19 +6,18 @@ import com.sai.rideFlow.Model.Customer;
 
 public class CustomerTransformer {
     public static Customer customerRequesttoCustomer(CustomerRequest customerRequest){
-        Customer customer=new Customer();
-        customer.setName(customerRequest.getName());
-        customer.setAge(customerRequest.getAge());
-        customer.setEmailID(customerRequest.getEmailID());
-        customer.setGender(customerRequest.getGender());
-        return customer;
+        return Customer.builder()
+                .name(customerRequest.getName())
+                .age(customerRequest.getAge())
+                .emailID(customerRequest.getEmailID())
+                .gender(customerRequest.getGender())
+                .build();
     }
     public static CustomerResponse customertoCustomerResponse(Customer customer){
-
-        CustomerResponse customerResponse = new CustomerResponse();
-        customerResponse.setName(customer.getName());
-        customerResponse.setAge(customer.getAge());
-        customerResponse.setEmailID(customer.getEmailID());
-        return customerResponse;
+        return CustomerResponse.builder()
+                .name(customer.getName())
+                .age(customer.getAge())
+                .emailID(customer.getEmailID())
+                .build();
     }
 }
