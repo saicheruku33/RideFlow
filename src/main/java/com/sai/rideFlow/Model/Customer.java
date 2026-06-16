@@ -1,10 +1,7 @@
 package com.sai.rideFlow.Model;
 
 import com.sai.rideFlow.Enum.Gender;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,12 +17,14 @@ import java.util.List;
 @Entity
 public class Customer {
     @Id
-    private int customerID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer customerID;
     private String name;
     private int age;
     private String emailID;
+    @Enumerated(EnumType.STRING)
     private Gender gender;
-    @OneToMany
+    @OneToMany(cascade =CascadeType.ALL)
     @JoinColumn(name="customerId")
     List<Booking> bookings=new ArrayList<>();
 }

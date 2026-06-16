@@ -16,7 +16,8 @@ import java.util.List;
 @Entity
 public class Driver {
     @Id
-    private int driverID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer driverID;
     private String name;
     private int age;
     private String emailID;
@@ -25,5 +26,5 @@ public class Driver {
     List<Booking> bookings=new ArrayList<>();
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name="cab_Id")
-    Cab cab;
+    private Cab cab;
 }

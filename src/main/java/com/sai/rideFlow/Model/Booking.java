@@ -1,8 +1,7 @@
 package com.sai.rideFlow.Model;
 
 import com.sai.rideFlow.Enum.TripStatus;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,10 +14,12 @@ import lombok.Setter;
 @Entity
 public class Booking {
     @Id
-    private int bookingID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer bookingID;
     private String pickup;
     private String destination;
     private int tripDistKm;
-    TripStatus tripStatus;
-    int billAmount;
+    @Enumerated(value=EnumType.STRING)
+    private TripStatus tripStatus;
+    private int billAmount;
 }

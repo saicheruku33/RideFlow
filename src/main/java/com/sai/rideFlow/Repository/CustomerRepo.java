@@ -1,4 +1,9 @@
 package com.sai.rideFlow.Repository;
 
-public class CustomerRepo {
+import com.sai.rideFlow.Model.Customer;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CustomerRepo extends JpaRepository<Customer,Integer> {
 }
