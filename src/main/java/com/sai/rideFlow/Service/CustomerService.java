@@ -2,6 +2,7 @@ package com.sai.rideFlow.Service;
 
 import com.sai.rideFlow.Dto.Request.CustomerRequest;
 import com.sai.rideFlow.Dto.Response.CustomerResponse;
+import com.sai.rideFlow.Enum.Gender;
 import com.sai.rideFlow.Exception.CustomerNotFoundException;
 import com.sai.rideFlow.Model.Customer;
 import com.sai.rideFlow.Repository.CustomerRepo;
@@ -9,6 +10,8 @@ import com.sai.rideFlow.Transformer.CustomerTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,5 +37,35 @@ public class CustomerService {
         Customer savedCustomer=optionalCustomer.get();
 
         return CustomerTransformer.customertoCustomerResponse(savedCustomer);
+    }
+
+    public List<CustomerResponse> getAllByGender(Gender gender) {
+        List<Customer>customers= customerRepo.findByGender(gender);
+
+        List<CustomerResponse> customerResponses=new ArrayList<>();
+        for(Customer customer: customers){
+            customerResponses.add(CustomerTransformer.customertoCustomerResponse(customer));
+        }
+        return customerResponses;
+
+
+    }
+
+    public List<CustomerResponse> getByGenderAndAge(Gender gender, int age) {
+        List<Customer>customers=customerRepo.findByGenderAndAge(gender,age);
+        List<CustomerResponse> customerResponses=new ArrayList<>();
+        for(Customer customer: customers){
+            customerResponses.add(CustomerTransformer.customertoCustomerResponse(customer));
+        }
+        return customerResponses;
+    }
+
+    public List<CustomerResponse> getByGenderAndAgeGreater(String gender, int age) {
+        List<Customer>customers=customerRepo.findByGenderAndAgeGreaterThan(gender,age);
+        List<CustomerResponse> customerResponses=new ArrayList<>();
+        for(Customer customer: customers){
+            customerResponses.add(CustomerTransformer.customertoCustomerResponse(customer));
+        }
+        return customerResponses;
     }
 }
