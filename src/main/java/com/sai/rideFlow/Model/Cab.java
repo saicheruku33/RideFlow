@@ -4,22 +4,21 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
+@Builder
 public class Cab {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cabID;
-    private int cabNo;
+    private String cabNo;
     private String cabModel;
     private int perkmRate;
     private boolean available;
+
 }
