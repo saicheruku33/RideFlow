@@ -19,6 +19,7 @@ public class Customer {
     private Integer customerID;
     private String name;
     private int age;
+    @Column(unique = true,nullable = false)
     private String emailID;
     @Enumerated(EnumType.STRING)
     private Gender gender;

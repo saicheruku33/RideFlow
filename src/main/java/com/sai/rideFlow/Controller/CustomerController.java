@@ -41,4 +41,14 @@ public class CustomerController {
         return customerService.getByGenderAndAgeGreater(gender,age);
     }
 
+    @PutMapping("/updatecustomer/{id}")
+    public CustomerResponse updateCustomer(@PathVariable int id,
+                                           @RequestBody CustomerRequest customerRequest){
+        return customerService.updateCustomer(id,customerRequest);
+    }
+    @DeleteMapping("/deletecustomer/{id}")
+    public ResponseEntity<String> deleteCustomer(@PathVariable int id){
+        return customerService.deleteCustomer(id);
+    }
+
 }

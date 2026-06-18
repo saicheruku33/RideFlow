@@ -8,6 +8,8 @@ import com.sai.rideFlow.Model.Customer;
 import com.sai.rideFlow.Repository.CustomerRepo;
 import com.sai.rideFlow.Transformer.CustomerTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -67,5 +69,29 @@ public class CustomerService {
             customerResponses.add(CustomerTransformer.customertoCustomerResponse(customer));
         }
         return customerResponses;
+    }
+
+    public CustomerResponse updateCustomer(int id, CustomerRequest customerRequest) {
+        Optional<Customer> optionalCustomer=customerRepo.findById(id);
+        if(optionalCustomer.isEmpty()){
+            throw new CustomerNotFoundException("Invalid Customer");
+        }
+        Customer savedCustomer=optionalCustomer.get();
+        savedCustomer.setName(customerRequest.getName());
+        savedCustomer.setGender(customerRequest.getGender());
+        savedCustomer.setAge(customerRequest.getAge());
+        savedCustomer.setEmailID(customerRequest.getEmailID());
+        customerRepo.save(savedCustomer);
+        return CustomerTransformer.customertoCustomerResponse(savedCustomer);
+    }
+
+    public ResponseEntity<String> deleteCustomer(int id) {
+        Optional<Customer> optionalCustomer=customerRepo.findById(id);
+        if(optionalCustomer.isEmpty()){
+            throw new CustomerNotFoundException("Invalid Customer");
+        }
+        Customer savedCustomer=optionalCustomer.get();
+        customerRepo.deleteById(id);
+        return new ResponseEntity<>("Successfully deleted",HttpStatus.OK);
     }
 }
