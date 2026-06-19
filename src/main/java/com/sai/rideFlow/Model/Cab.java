@@ -18,7 +18,7 @@ public class Cab {
     private Integer cabID;
     private String cabNo;
     private String cabModel;
-    private int perkmRate;
+    private double perkmRate;
     private boolean available;
 
 }

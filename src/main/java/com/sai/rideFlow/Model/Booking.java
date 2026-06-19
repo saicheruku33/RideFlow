@@ -2,16 +2,18 @@ package com.sai.rideFlow.Model;
 
 import com.sai.rideFlow.Enum.TripStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
+@Builder
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,5 +23,9 @@ public class Booking {
     private int tripDistKm;
     @Enumerated(value=EnumType.STRING)
     private TripStatus tripStatus;
-    private int billAmount;
+    private double billAmount;
+    @CreationTimestamp
+    Date bookedAt;
+    @UpdateTimestamp
+    Date lastUpdate;
 }

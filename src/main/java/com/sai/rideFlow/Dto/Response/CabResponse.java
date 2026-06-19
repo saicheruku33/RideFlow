@@ -8,10 +8,10 @@ import lombok.*;
 @Setter
 @Builder
 public class CabResponse {
-    private String cabNo;
-    private String cabModel;
-    private int perkmRate;
-    private boolean available;
-    private DriverResponse driver;
+    String cabNo;
+    String cabModel;
+    double perkmRate;
+    boolean available;
+    DriverResponse driver;
 
 }

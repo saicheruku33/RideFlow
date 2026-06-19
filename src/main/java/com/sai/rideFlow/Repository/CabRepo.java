@@ -1,7 +1,12 @@
 package com.sai.rideFlow.Repository;
 
+import com.sai.rideFlow.Model.Cab;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CabRepo {
+public interface CabRepo extends JpaRepository<Cab,Integer> {
+    @Query("select c from Cab c where c.available=true order by rand() limit 1 ")
+    Cab getAvailableCabRandomly();
 }

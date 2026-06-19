@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @Builder
 public class CustomerResponse {
-    private String name;
-    private int age;
-    private String emailID;
+    String name;
+    int age;
+    String emailID;
 }
